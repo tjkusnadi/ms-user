@@ -6,16 +6,17 @@ const registerUserHandler = async (req, res) => {
     dbConnector
   } = res.locals;
 
-  const { username, password } = req.body;
+  const { username, password, role } = req.body;
   const salt = bcrypt.genSaltSync(10);
   const hashed = bcrypt.hashSync(password, salt);
 
   const payload = {
     username,
-    password: hashed
+    password: hashed,
+    role
   };
 
-  const save = await dbConnector.insertOne(payload);
+  await dbConnector.insertOne(payload);
 
   res.status(statusCode.CREATED);
   res.send({ message: "user created" });

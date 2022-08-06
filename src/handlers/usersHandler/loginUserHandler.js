@@ -19,19 +19,19 @@ const loginUserHandler = async (req, res) => {
     const hash = userData.password;
     const compare = await bcrypt.compare(password, hash);
     delete userData.password;
-    
+
     if (compare) {
         const token = await authHelper({ userData });
         res.status(statusCode.OK);
-        res.send({ token });
+        return res.send({ token });
     }
 
     res.status(statusCode.UNAUTHORIZED);
-    res.send({ message: "wrong credentials" });
+    return res.send({ message: "wrong credentials" });
   }
 
   res.status(statusCode.NOT_FOUND);
-  res.send({ message: 'user not found' });
+  return res.send({ message: 'user not found' });
 };
 
 module.exports = loginUserHandler;

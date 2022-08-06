@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const userSchema = (post) => {
+const registerSchema = (post) => {
   const schema = Joi.object({
     username: Joi.string()
       .min(3)
@@ -9,9 +9,10 @@ const userSchema = (post) => {
     password: Joi.string()
       .min(3)
       .max(30)
-      .required()
+      .required(),
+    role: Joi.string().required()
   });
   return schema.validate(post);
 };
 
-module.exports = userSchema;
+module.exports = registerSchema;
