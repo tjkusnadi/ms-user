@@ -5,6 +5,6 @@ const { userSchema } = require('../../schemas');
 
 const router = express.Router();
 
-router.post('/users/register', createHandler(registerUserHandler));
+router.post('/users/register', validateSchema(userSchema),  createHandler(registerUserHandler));
 
 module.exports = router;
