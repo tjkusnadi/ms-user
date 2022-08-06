@@ -10,11 +10,17 @@ class UserModel {
   }
 
   async insertOne(payload) {
-
     const result = await this.collection.insertOne(payload);
 
     return result;
   }
+
+  async findOne(payload) {
+    const result = await this.collection.findOne(payload);
+
+    return result;
+  }
+
 }
 
 module.exports = UserModel;

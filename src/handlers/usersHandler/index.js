@@ -1,3 +1,4 @@
 const registerUserHandler = require('./registerUserHandler');
+const loginUserHandler = require('./loginUserHandler');
 
-module.exports = { registerUserHandler };
+module.exports = { registerUserHandler, loginUserHandler };
